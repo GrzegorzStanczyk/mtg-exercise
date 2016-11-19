@@ -1,7 +1,7 @@
 # mtg-exercise
 Exercise that utilises working with an array of objects
 
-## Usage
+## Gulp usage
 ### Install
     npm install
 
