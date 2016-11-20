@@ -1,4 +1,5 @@
 .cursor {
+  z-index: 100;
   width: 5%;
   height: 100%;
   position: absolute;
@@ -74,8 +75,41 @@ li {
   display: block;
   width: 20%;
   height: 33.33%;
-  background-color: #CD2C24; }
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out; }
+  li:hover {
+    -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+            transform: scale(1.05);
+    -webkit-box-shadow: 2px 4px 29px -1px rgba(0, 0, 0, 0.75);
+            box-shadow: 2px 4px 29px -1px rgba(0, 0, 0, 0.75); }
   li:nth-child(3n+1) {
     background-color: #63A69F; }
+    li:nth-child(3n+1):hover {
+      -webkit-transform: translateY(2%) scale(1.05);
+          -ms-transform: translateY(2%) scale(1.05);
+              transform: translateY(2%) scale(1.05); }
   li:nth-child(3n+2) {
     background-color: #F2EA6B; }
+  li:nth-child(3n+3) {
+    background-color: #CD2C24; }
+    li:nth-child(3n+3):hover {
+      -webkit-transform: translateY(-2%) scale(1.05);
+          -ms-transform: translateY(-2%) scale(1.05);
+              transform: translateY(-2%) scale(1.05); }
+  li:nth-child(1):hover {
+    -webkit-transform: translateX(2.5%) translateY(2%) scale(1.05);
+        -ms-transform: translateX(2.5%) translateY(2%) scale(1.05);
+            transform: translateX(2.5%) translateY(2%) scale(1.05); }
+  li:nth-child(2):hover {
+    -webkit-transform: translateX(2.5%) scale(1.05);
+        -ms-transform: translateX(2.5%) scale(1.05);
+            transform: translateX(2.5%) scale(1.05); }
+  li:nth-child(3):hover {
+    -webkit-transform: translateX(2.5%) translateY(-2%) scale(1.05);
+        -ms-transform: translateX(2.5%) translateY(-2%) scale(1.05);
+            transform: translateX(2.5%) translateY(-2%) scale(1.05); }
+  li:nth-last-child(-n+3):hover {
+    -webkit-transform: translateX(-2.5%) scale(1.05);
+        -ms-transform: translateX(-2.5%) scale(1.05);
+            transform: translateX(-2.5%) scale(1.05); }
