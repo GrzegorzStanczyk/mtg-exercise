@@ -15,8 +15,11 @@ $(function() {
   })
 
 	function addCard(img, type, color) {
+		var cardImage = $('<img />', {
+			src: "http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid="+img
+		})
 		var $card = $('<li />', {
-			html: 'type: ' + type + '<br>' + 'color: ' + color + '<br>' + 'img: ' + img
+			html: cardImage
 		})
 		return $card
 	}
