@@ -1,35 +1,54 @@
 $(function() {
-	var slidesLenght = $('li:nth-child(3n+1)').length
-	var widthSlide = $('li').width()
-	var actualPosition = 0
-	var contentWidth = (slidesLenght-5)*(widthSlide)
-	var $leftButton = $('.left-cursor')
-	var $rightButton = $('.right-cursor')
-	var $overflowContent = $('.container')
+
 
   $.getJSON('https://mtgjson.com/json/KLD.json', function(kaladesh) {
     var cards = kaladesh.cards
-    console.log(cards) // Remove this
+		console.log(cards)
+		var $cardsList = $('ul')
+		$cardsList.empty()
+		for(var i = 0; i < cards.length; i++) {
+			$cardsList.append(addCard(cards[i].multiverseid, cards[i].type, cards[i].colors))
+		}
+		carousel()
   })
 
- 	console.log(slidesLenght)
-  console.log(widthSlide)
-  console.log(contentWidth)
+	function addCard(img, type, color) {
+		var $card = $('<li />', {
+			html: 'type: ' + type + '<br>' + 'color: ' + color + '<br>' + 'img: ' + img
+		})
+		return $card
+	}
 
-	$rightButton.on('click', function(){
-		console.log(actualPosition)
-		if (actualPosition>=contentWidth) return
+	function carousel() {
+		
+			var slidesLenght = $('li:nth-child(3n+1)').length
+			var widthSlide = $('li').width()
+			var actualPosition = 0
+			var contentWidth = (slidesLenght-5)*(widthSlide)
+			var $leftButton = $('.left-cursor')
+			var $rightButton = $('.right-cursor')
+			var $overflowContent = $('.container')
 
-		actualPosition+=widthSlide
-		$overflowContent.animate({scrollLeft: actualPosition}, 400)
-	})
+			$rightButton.on('click', function(){
+				console.log(actualPosition)
+				if (actualPosition>=contentWidth) return
 
-	$leftButton.on('click', function(){
-		console.log(actualPosition)
-		if (actualPosition == 0) return
+				actualPosition+=widthSlide
+				$overflowContent.animate({scrollLeft: actualPosition}, 400)
+			})
 
-		actualPosition-=widthSlide
-		$overflowContent.animate({scrollLeft: actualPosition}, 400)
-	})
+			$leftButton.on('click', function(){
+				console.log(actualPosition)
+				if (actualPosition == 0) return
+
+				actualPosition-=widthSlide
+				$overflowContent.animate({scrollLeft: actualPosition}, 400)
+			})
+	}
+
+
+
+
+
 
 })
