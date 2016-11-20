@@ -7,7 +7,9 @@ $(function() {
 		var $cardsList = $('ul')
 		$cardsList.empty()
 		for(var i = 0; i < cards.length; i++) {
-			$cardsList.append(addCard(cards[i].multiverseid, cards[i].type, cards[i].colors))
+			if(cards[i].colors == "Red" & cards[i].type.indexOf("Creature") >= 0) {
+				$cardsList.append(addCard(cards[i].multiverseid, cards[i].type, cards[i].colors))
+			}
 		}
 		carousel()
   })
@@ -20,7 +22,7 @@ $(function() {
 	}
 
 	function carousel() {
-		
+
 			var slidesLenght = $('li:nth-child(3n+1)').length
 			var widthSlide = $('li').width()
 			var actualPosition = 0
